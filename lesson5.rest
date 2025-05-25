@@ -1,7 +1,7 @@
-### GET All Books (Local)
+### GET All Books (L)
 GET http://localhost:8080/books
 
-### POST Create Book (Local)
+### POST Create Book (L)
 POST http://localhost:8080/books
 Content-Type: application/json
 
@@ -11,10 +11,10 @@ Content-Type: application/json
   "year": 1965
 }
 
-### GET Book by ID (Local)
+### GET Book by ID (L)
 GET http://localhost:8080/books/6832b599e40fddd9a6a5c348
 
-### PUT Update Book (Local)
+### PUT Update Book (L)
 PUT http://localhost:8080/books/6832b599e40fddd9a6a5c348
 Content-Type: application/json
 
@@ -24,15 +24,15 @@ Content-Type: application/json
   "year": 1966
 }
 
-### DELETE Book (Local)
+### DELETE Book (L)
 DELETE http://localhost:8080/books/6832b599e40fddd9a6a5c348
 
 ###
 
-### GET All Books (Render)
+### GET All Books (R)
 GET https://lesson5-books-api.onrender.com/books
 
-### POST Create Book (Render)
+### POST Create Book (R)
 POST https://lesson5-books-api.onrender.com/books
 Content-Type: application/json
 
@@ -42,10 +42,10 @@ Content-Type: application/json
   "year": 1965
 }
 
-### GET Book by ID (Render)
+### GET Book by ID (R)
 GET https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
 
-### PUT Update Book (Render)
+### PUT Update Book (R)
 PUT https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
 Content-Type: application/json
 
@@ -55,5 +55,5 @@ Content-Type: application/json
   "year": 1966
 }
 
-### DELETE Book (Render)
+### DELETE Book (R)
 DELETE https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
