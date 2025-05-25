@@ -10,3 +10,19 @@ Content-Type: application/json
   "author": "Frank Herbert",
   "year": 1965
 }
+
+### GET Book by ID (Local)
+GET http://localhost:8080/books/6832b599e40fddd9a6a5c348
+
+### PUT Update Book (Local)
+PUT http://localhost:8080/books/6832b599e40fddd9a6a5c348
+Content-Type: application/json
+
+{
+  "title": "Dune (Updated)",
+  "author": "Frank Herbert",
+  "year": 1966
+}
+
+### DELETE Book (Local)
+DELETE http://localhost:8080/books/6832b599e40fddd9a6a5c348
