@@ -26,3 +26,34 @@ Content-Type: application/json
 
 ### DELETE Book (Local)
 DELETE http://localhost:8080/books/6832b599e40fddd9a6a5c348
+
+###
+
+### GET All Books (Render)
+GET https://lesson5-books-api.onrender.com/books
+
+### POST Create Book (Render)
+POST https://lesson5-books-api.onrender.com/books
+Content-Type: application/json
+
+{
+  "title": "Dune",
+  "author": "Frank Herbert",
+  "year": 1965
+}
+
+### GET Book by ID (Render)
+GET https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
+
+### PUT Update Book (Render)
+PUT https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
+Content-Type: application/json
+
+{
+  "title": "Dune (Updated)",
+  "author": "Frank Herbert",
+  "year": 1966
+}
+
+### DELETE Book (Render)
+DELETE https://lesson5-books-api.onrender.com/books/6832b599e40fddd9a6a5c348
