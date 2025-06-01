@@ -1,18 +1,68 @@
 const Book = require('../models/Book');
-exports.getAll   = async (req,res) => res.json(await Book.find());
-exports.getById  = async (req,res) => {
-  const b = await Book.findById(req.params.id);
-  return b ? res.json(b) : res.sendStatus(404);
+
+exports.getAll = async (req, res) => {
+  try {
+    const books = await Book.find();
+    res.json(books);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
 };
-exports.create   = async (req,res) => {
-  const b = await Book.create(req.body);
-  res.status(201).json({ id: b._id });
+
+exports.getById = async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id);
+    return book ? res.json(book) : res.sendStatus(404);
+  } catch (err) {
+    res.status(400).json({ error: 'Invalid ID format' });
+  }
 };
-exports.update   = async (req,res) => {
-  await Book.findByIdAndUpdate(req.params.id, req.body);
-  res.sendStatus(204);
+
+exports.create = async (req, res) => {
+  const { title, author, year } = req.body;
+
+  if (!title || !author || !year) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    const book = await Book.create({ title, author, year });
+    res.status(201).json({ id: book._id });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
 };
-exports.remove   = async (req,res) => {
-  await Book.findByIdAndDelete(req.params.id);
-  res.sendStatus(200);
+
+exports.update = async (req, res) => {
+  const { title, author, year } = req.body;
+
+  if (!title || !author || !year) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    const result = await Book.findByIdAndUpdate(req.params.id, { title, author, year });
+
+    if (!result) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.sendStatus(204);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+exports.remove = async (req, res) => {
+  try {
+    const result = await Book.findByIdAndDelete(req.params.id);
+
+    if (!result) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.sendStatus(200);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
 };
